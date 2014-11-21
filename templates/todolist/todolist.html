@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link href="{{ url_for('static', filename='todolist/styles.css') }}" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="{{ url_for('static', filename='todolist/todo-main.js') }}"></script>
+
+
+</head>
+
+
+<body>
+    <div id="todo-list">
+        <div class="heading">
+            <H1> Todo list</H1>
+        </div>
+
+        <form id="todo-input" class="pure-form" >
+                <input type="text" id="add-todo" class="pure-input-1" placeholder="What do you need to do?">
+
+            <button class="pure-button pure-button-primary">Add</button>
+        </form>
+
+        <section id="main">
+            <div id="input-task">
+                <input id="switch-all" type="checkbox">
+                <label for="switch-all">Mark all goals</label>
+            </div>
+
+            <ul id="list-tasks">
+
+
+
+            </ul>
+
+            <footer class="pure-g">
+                <div id="tasks-remaining" class="pure-u-2-3">0 tasks remaining</div>
+
+                <div id="remove-all-tasks" class="pure-u-1-4" display="none">Remove marked tasks</div>
+
+            </footer>
+
+
+
+        </section>
+
+    </div>
+</body>
+
+
+</html>

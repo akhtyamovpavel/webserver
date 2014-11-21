@@ -1,0 +1,113 @@
+body {
+    background-color: lightsteelblue;
+}
+
+.heading {
+    font: 26px ornament;
+    color: #000000;
+    text-align: center;
+}
+
+#todo-list {
+    margin: 0 auto;
+    width: 600px;
+    border: 3px solid silver;
+    background-color: honeydew;
+}
+
+
+.main {
+    text-align: left;
+}
+
+
+#input-task {
+    font: 16px sans-serif;
+    margin-left: 35px;
+    margin-top: 10px;
+}
+
+.main {
+    font: 20px sans-serif;
+}
+
+
+
+#add-todo {
+    margin-left: 35px;
+    float: left;
+    width: 450px;
+}
+
+#list-tasks {
+    list-style: none;
+    margin: 10px;
+    width: inherit;
+
+}
+#list-tasks #task-view {
+    width: inherit;
+}
+#list-tasks .terminate {
+    float: right;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+#list-tasks li {
+    margin-left: -25px;
+    padding: 10px;
+    border-bottom: 1px solid darkgrey;
+    font: 20px "Times New Roman";
+}
+
+#list-tasks #task-done .task-view {
+    text-decoration: line-through;
+}
+
+#list-tasks #task-edit {
+
+}
+
+#list-tasks li:last-child {
+    border-bottom: none;
+}
+
+#main footer {
+    padding-left: 30px;
+    font-family: cursive;
+    font-size: 18px;
+    background-color: burlywood;
+}
+
+.switch-task {
+    float: left;
+}
+
+
+
+.task-text {
+    position: relative;
+    top: -5px;
+    left: 10px;
+    width: 400px;
+}
+
+.task-edit {
+    width: 435px;
+}
+
+i{
+    position: relative;
+    top: -7px;
+    left: 150px;
+}
+
+#remove-all-tasks {
+    background-color: crimson;
+    border-radius: 5px;
+    border: 3px solid red;
+    display: none;
+}
