@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    Your link to URL: <b>{{ link }}</b>
+    <br/>
+    <form method="post" action={{ url_for('shorten_redirect') }}>
+        <input type="text" name="link" placeholder="Enter your link">
+        <input type="submit" name="Go!">
+    </form>
+{% endblock %}
