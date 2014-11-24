@@ -19,7 +19,11 @@ def run_short_sites():
 @app.route('/shortener/new_url', methods=['POST'])
 def new_url():
     url = request.form['url']
-    link = add_url(url)
+    current_link = request.form['link']
+    if current_link == "":
+        link = add_url(url)
+    else:
+        link = add_url(url, current_link)
     return render_template('shortener/new.html', link=link)
 
 @app.route('/shortener/redirect', methods=['POST'])
