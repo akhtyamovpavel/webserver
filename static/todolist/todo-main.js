@@ -120,7 +120,7 @@ $(document).ready(function() {
             $(to_change).css('text-decoration',  'line-through');
         }
         updateCounter();
-    })
+    });
 
     $(document).on('click', 'i', function() {
         $($(this).parent().parent()).remove();

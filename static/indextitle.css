@@ -1,0 +1,32 @@
+body {
+    background-color: lightsteelblue;
+}
+
+.heading {
+    font: 20px ornament;
+    color: #000000;
+    text-align: center;
+}
+
+#index-main {
+    font: 16px sans-serif;
+    padding: 20px;
+}
+#main-section {
+    margin: 0 auto;
+    width: 1000px;
+    border: 3px solid silver;
+    background-color: honeydew;
+}
+
+#tasks {
+    font: 16px sans-serif;
+    padding: 20px;
+}
+
+#index-main footer {
+    padding-left: 30px;
+    font-family: cursive;
+    font-size: 18px;
+    background-color: burlywood;
+}

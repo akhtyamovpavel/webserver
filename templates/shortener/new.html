@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
+{% block headers %}
+    <title>Shortener</title>
+    <link href="{{ url_for('static', filename='indextitle.css')}}" rel="stylesheet"/>
+{% endblock %}
+
 {% block content %}
-    Your link to URL: <b>{{ link }}</b>
-    <br/>
-    <form method="post" action={{ url_for('shorten_redirect') }}>
-        <input type="text" name="link" placeholder="Enter your link">
-        <input type="submit" name="Go!">
-    </form>
+    <div id="main-section">
+        Your link to URL: <b><a href="https://akhtyamovpavel.herokuapp.com/send/{{ link }}">
+            https://akhtyamovpavel.herokuapp.com/send/{{ link }}</a></b>
+        <br/>
+        <form method="post" action={{ url_for('shorten_redirect') }}>
+            <input type="text" name="link" placeholder="Enter your link">
+            <input type="submit" name="Go!">
+        </form>
+    </div>
 {% endblock %}

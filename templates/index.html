@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block headers %}
+    <link href="{{ url_for('static', filename='indextitle.css')}}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div id="main-section">
+    <div class="heading">
+        <H1> Akhtyamov Pavel's site</H1>
+    </div>
+
+
+    <section id="index-main">
+        Сайт предназначен для публикаций всякого рода экспериментов в создании сайтов.
+    </section>
+
+    <section id="tasks">
+        <a class="pure-button" href="todolist">Todo list</a>
+        <br/>
+        <a class="pure-button" href="shortener">Сокращатель ссылок</a>
+    </section>
+
+
+</div>
+
+{% endblock %}
+
