@@ -9,9 +9,6 @@
         Your link to URL: <b><a href="https://akhtyamovpavel.herokuapp.com/send/{{ link }}">
             https://akhtyamovpavel.herokuapp.com/send/{{ link }}</a></b>
         <br/>
-        <form method="post" action={{ url_for('shorten_redirect') }}>
-            <input type="text" name="link" placeholder="Enter your link">
-            <input type="submit" name="Go!">
-        </form>
+        <a class="pure-button" href="{{ url_for('run_short_sites') }}">Return back</a>
     </div>
 {% endblock %}

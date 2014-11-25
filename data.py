@@ -33,6 +33,12 @@ def add_url(url, link=None):
             __urls__[link] = url
             save_urls()
             return link
+        else:
+            gen_string = generator()
+            __urls__[gen_string] = url
+            save_urls()
+            return gen_string
+
 
 def get_url(hash):
     if __urls__.get(hash) is None:

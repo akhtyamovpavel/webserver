@@ -10,7 +10,7 @@
             <H1>Shortener</H1>
         </div>
 
-        <form class="pure-form" method="post" action="{{ url_for('new_url') }}">
+        <form class="pure-form" id="enter" method="post" action="{{ url_for('new_url') }}">
             <input class="pure-input-2-3" type="text" name="url" placeholder="Put your URL here">
             <input class="pure-input-1-4" type="text" name="link" placeholder="Your link(if you want)">
             <button type="submit" class="pure-button pure-button-primary">Shortener!</button>
