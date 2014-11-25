@@ -20,13 +20,19 @@ __urls__ = load_urls()
 def generator(size=6, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for i in range(size))
 
-def add_url(url):
-    while True:
-        gen_string = generator()
-        if __urls__.get(gen_string) is None:
-            __urls__[gen_string] = url
+def add_url(url, link=None):
+    if link is None:
+        while True:
+            gen_string = generator()
+            if __urls__.get(gen_string) is None:
+                __urls__[gen_string] = url
+                save_urls()
+                return gen_string
+    else:
+        if __urls__.get(link) is None:
+            __urls__[link] = url
             save_urls()
-            return gen_string
+            return link
 
 def get_url(hash):
     if __urls__.get(hash) is None:
