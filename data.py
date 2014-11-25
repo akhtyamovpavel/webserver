@@ -11,7 +11,7 @@ def load_urls():
 
 def save_urls():
     with open(DATA_FILE, 'w', encoding=FILE_ENCODING) as data_file:
-        print(repr(__urls__), file=data_file)
+        data_file.write(repr(__urls__))
 
 
 __urls__ = load_urls()

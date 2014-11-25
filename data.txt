@@ -1,1 +1,1 @@
-{'pavlonnel': 'yandex.ru', 'WHPHpz': 'yandex.ru', '7YuSRP': 'sample.com', 'VpqHqV': 'akhtyamovpavel.herokuapp.com'}
+{'pavel': 'yandex.ru', 'VpqHqV': 'akhtyamovpavel.herokuapp.com', '7YuSRP': 'sample.com', 'WHPHpz': 'yandex.ru', 'pavlonnel': 'yandex.ru'}
