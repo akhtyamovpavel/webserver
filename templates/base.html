@@ -5,14 +5,20 @@
     <title>Akhtyamov Pavel site</title>
 
     <link href="{{ url_for('static', filename='pure-min.css') }}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <script src="{{ url_for('static', filename='jquery-2.1.1.min.js') }}"></script>
     {% block headers %}{% endblock %}
 </head>
 
 
 <body>
-
-    {% block content %}{% endblock %}
+    <div id="main">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        Powered by Akhtyamov Pavel
+    </footer>
 </body>
+
 
 </html>

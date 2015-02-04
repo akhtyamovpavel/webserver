@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, request
-from data import add_url, get_url
+from data import add_url, get_url, get_list_links
 import os
 
 app = Flask(__name__)
@@ -24,7 +24,8 @@ def new_url():
         link = add_url(url)
     else:
         link = add_url(url, current_link)
-    return render_template('shortener/new.html', link=link)
+
+    return render_template('shortener/new.html', link=link, login=None)
 
 @app.route('/shortener/redirect', methods=['POST'])
 def shorten_redirect():

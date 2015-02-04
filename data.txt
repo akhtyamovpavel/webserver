@@ -1,1 +1,1 @@
-{'pavel': 'yandex.ru', 'WHPHpz': 'yandex.ru', 'yaa': 'yandex.ru', 'dsddssdds': 'bBB', 'ss': 's', 'y': 'y', 'VpqHqV': 'akhtyamovpavel.herokuapp.com', '7YuSRP': 'sample.com', 'UeTXgr': 'y', 'ff': 'ff', 'pavlonnel': 'yandex.ru'}
+[{'login': None, 'url': 'sdjdsds', 'link': 'd5V7J2'}]

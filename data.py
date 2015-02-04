@@ -5,9 +5,11 @@ import random
 FILE_ENCODING = 'utf-8'
 DATA_FILE = 'data.txt'
 
+
 def load_urls():
     with open(DATA_FILE, 'r', encoding=FILE_ENCODING) as data_file:
         return eval(data_file.read())
+
 
 def save_urls():
     with open(DATA_FILE, 'w', encoding=FILE_ENCODING) as data_file:
@@ -20,28 +22,45 @@ __urls__ = load_urls()
 def generator(size=6, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for i in range(size))
 
-def add_url(url, link=None):
+
+def add_url(url, link=None, login=None):
+    shortened_link = url
     if link is None:
         while True:
             gen_string = generator()
-            if __urls__.get(gen_string) is None:
-                __urls__[gen_string] = url
-                save_urls()
-                return gen_string
+            if not is_shortened_url(gen_string):
+                shortened_link = gen_string
+                break
     else:
         if __urls__.get(link) is None:
-            __urls__[link] = url
-            save_urls()
-            return link
+            shortened_link = link
         else:
             gen_string = generator()
-            __urls__[gen_string] = url
-            save_urls()
-            return gen_string
+            shortened_link = gen_string
+    new_url = get_link(url, shortened_link, login)
+    __urls__.append(new_url)
+    save_urls()
+    return shortened_link
+
+def get_url(link):
+    for user in __urls__:
+        if user.get('link') == link:
+            return user.get('url')
+
+def get_link(url, link, login):
+    return {'url': url, 'link': link, 'login': login}
+
+def is_shortened_url(shortened_link):
+    for user in __urls__:
+        if user['link'] == shortened_link:
+            return True
+    return False
 
 
-def get_url(hash):
-    if __urls__.get(hash) is None:
-        return None
-    return __urls__[hash]
+def get_list_links(login):
+    link_list = []
+    for user in __urls__:
+        if user.get('login') == login:
+            link_list.append(user)
+    return link_list
 
