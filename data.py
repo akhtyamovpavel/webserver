@@ -6,6 +6,8 @@ FILE_ENCODING = 'utf-8'
 DATA_FILE = 'data.txt'
 
 
+
+
 def load_urls():
     with open(DATA_FILE, 'r', encoding=FILE_ENCODING) as data_file:
         return eval(data_file.read())

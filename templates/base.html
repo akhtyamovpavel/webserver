@@ -11,7 +11,19 @@
 </head>
 
 
+
 <body>
+
+    <div id="header">
+        <div id="heading">
+            {% block title %}{% endblock %}
+        </div>
+        <ul id="tasks">
+            <li><a class="pure-button" href="/">Главная</a></li>
+            <li><a class="pure-button" href="/todolist">TODO list</a></li>
+            <li><a class="pure-button" href="/shortener">Сокращатель ссылок</a></li>
+        </ul>
+    </div>
     <div id="main">
         {% block content %}{% endblock %}
     </div>

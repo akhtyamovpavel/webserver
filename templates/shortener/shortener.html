@@ -6,18 +6,25 @@
 
 {% endblock %}
 
+{% block title %}
+   <H1> Shortener</H1>
+{% endblock %}
+
+
+{
 {% block content %}
     <div id="main-section">
-        <div class="heading">
-            <H1>Shortener</H1>
-        </div>
+
 
         <form class="pure-form" id="enter" method="post" action="{{ url_for('new_url') }}">
             <input class="pure-input-2-3" type="text" name="url" placeholder="Put your URL here">
             <input class="pure-input-1-4" type="text" name="link" placeholder="Your link(if you want)">
             <button type="submit" class="pure-button pure-button-primary get-url-button">Shortener!</button>
-
         </form>
+        {% if link %}
+            Your link to URL: <b><a href="https://akhtyamovpavel.herokuapp.com/send/{{ link }}">
+            https://akhtyamovpavel.herokuapp.com/send/{{ link }}</a></b>
+        {% endif %}
     </div>
 
 {% endblock %}

@@ -4,36 +4,68 @@ html, body {
     padding: 0;
 }
 
-
-.heading {
-    font: 20px ornament;
-    color: #000000;
-    text-align: center;
+body {
     font-family: 'Open Sans', sans-serif;
+}
+
+
+
+#header {
+    height: 150px;
+}
+
+#heading {
+    font-size: 20px;
+    color: #000000;
+    padding-left: 80px;
+    padding-top: 30px;
+    font-family: 'Open Sans', sans-serif;
+    float: left;
 }
 
 #main {
     overflow: auto;
     min-height: 100%;
     padding-bottom: -180px;
+    min-width: 80%;
+    padding-left: 50px;
+    padding-bottom: 50px;
 }
 
 #index-main {
-    font: 16px sans-serif;
+    font-size: 16px;
     padding: 20px;
 }
 
 #main-section {
-    margin: 0 auto;
+    margin-left: 50px;
     width: 1000px;
-    border: 3px solid silver;
+    min-width: 80%;
+
+    border: 3px silver;
     border-radius: 15px;
     background-color: #bfbfbf;
+    padding-left: 50px;
+    padding-bottom: 50px;
+
 }
 
-#tasks {
-    font: 16px sans-serif;
-    padding: 20px;
+ul#tasks {
+    font-size: 16px;
+    padding-right: 50px;
+    padding-top: 70px;
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    float: right;
+}
+
+ul#tasks li {
+    display: inline;
+}
+
+ul#tasks a {
+    width: 200px;
 }
 
 #index-main footer {
@@ -52,5 +84,4 @@ footer {
     height: 180px;
     clear: both;
     background-color: #dddddd;
-
 }
