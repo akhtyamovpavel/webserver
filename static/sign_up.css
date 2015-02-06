@@ -1,0 +1,18 @@
+ul.login-errors {
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: red;
+}
+
+ul.login-errors li {
+    list-style-type: none;
+}
+
+ul.password-errors {
+    font-weight: bold;
+    color: orangered;
+}
+
+ul.password-errors li {
+    list-style-type: none;
+}

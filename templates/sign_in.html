@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block headers %}
+    <link href="{{ url_for('static', filename='sign_in.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}
+    Sign In
+{% endblock %}
+
+{% block content %}
+<div id="main-section">
+    <section id="index-main">
+        <form id="sign_in_main" method="post" action="{{ url_for('sign_in') }}">
+            {% with info_messages = get_flashed_messages(category_filter='info') %}
+                {% if info_messages %}
+                    <ul class="info">
+                        {% for message in info_messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            {% with error_messages = get_flashed_messages(category_filter='error') %}
+                {% if error_messages %}
+                    <ul class="error">
+                        {% for message in error_messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+            Login <input class="login" type="text" name="login">
+            <br/>
+            Password <input class="password" type="password" name="password">
+            <br/>
+            <button type="submit" class="pure-button pure-button-primary">Sign In</button>
+        </form>
+
+
+    </section>
+
+</div>
+{% endblock %}

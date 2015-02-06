@@ -6,7 +6,9 @@
 
     <link href="{{ url_for('static', filename='pure-min.css') }}" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="{{ url_for('static', filename='indextitle.css')}}" rel="stylesheet"/>
     <script src="{{ url_for('static', filename='jquery-2.1.1.min.js') }}"></script>
+
     {% block headers %}{% endblock %}
 </head>
 
@@ -15,14 +17,55 @@
 <body>
 
     <div id="header">
-        <div id="heading">
-            {% block title %}{% endblock %}
-        </div>
-        <ul id="tasks">
-            <li><a class="pure-button" href="/">Главная</a></li>
-            <li><a class="pure-button" href="/todolist">TODO list</a></li>
-            <li><a class="pure-button" href="/shortener">Сокращатель ссылок</a></li>
-        </ul>
+        <table>
+        <tr>
+            <td>
+                <div id="heading">
+                    {% block title %}{% endblock %}
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <ul id="tasks">
+                    <li><a class="pure-button" href="/">Главная</a></li>
+                    <li><a class="pure-button" href="/todolist">TODO list</a></li>
+                    <li><a class="pure-button" href="/shortener">Сокращатель ссылок</a></li>
+                </ul>
+            </td>
+        </tr>
+        </table>
+
+        {% if session.get('login') %}
+            <div id="profile">
+                <div id="profile_data">
+                    You're <b>{{ session['login'] }}</b>
+                    <form method="post" action="{{ url_for('sign_out') }}">
+                        <button type="submit" class="pure-button pure-button-primary">Log Out</button>
+                    </form>
+                </div>
+            </div>
+
+        {% else %}
+                <div id="login_data">
+                    <form id="sign_in" method="post" action="{{ url_for('sign_in') }}">
+                        Login <input class="login" type="text" name="login">
+                        <br/>
+                        Password <input class="password" type="password" name="password">
+                        <br/>
+                        <button type="submit" class="pure-button pure-button-primary">Sign In</button>
+                    </form>
+
+                    <form id="sign_up" method="sign_up" method="post" action="{{ url_for('sign_up') }}" >
+                        You haven't registered yet:
+                        <button type="submit" class="pure-button pure-button-primary">Sign Up</button>
+                    </form>
+                </div>
+
+
+
+        {% endif %}
     </div>
     <div id="main">
         {% block content %}{% endblock %}

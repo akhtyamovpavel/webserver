@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect, request, flash, get_flashed_messages
+from flask import Flask, render_template, redirect, request, flash, get_flashed_messages, session, url_for
 from data import add_url, get_url, get_list_links
 import os
+from sign import validate_user, is_registered, add_user
 
 app = Flask(__name__)
 
@@ -51,6 +52,56 @@ def redirect_url(link):
             return redirect(get_url(link), code=302)
         else:
             return redirect('http://' + url, code=302)
+
+
+@app.route('/sign_in', methods=['GET', 'POST'])
+def sign_in():
+    if request.method == 'POST':
+        login = request.form['login']
+        password = request.form['password']
+        if validate_user(login, password):
+            session['login'] = request.form['login']
+            return redirect('/', code=302)
+        else:
+            flash("Wrong login or password", 'error')
+            return render_template('sign_in.html')
+    else:
+        return render_template('sign_in.html')
+
+
+@app.route('/sign_up', methods=['GET', 'POST'])
+def sign_up():
+    if request.method == 'POST':
+        login = request.form['login']
+        password = request.form['password']
+        counter = 0
+        if is_registered(login):
+            flash('Username is busy', 'login_errors')
+            counter += 1
+        if len(login) == 0:
+            flash('Username is empty', 'login_errors')
+            counter += 1
+        if len(password) < 6:
+            flash('Password should be greater than 6 symbols', 'password_errors')
+            counter += 1
+        if counter > 0:
+            return render_template('sign_up.html')
+        else:
+            add_user(login, password)
+            flash('You have successfully registered', 'info')
+            return redirect(url_for('sign_in'), code=302)
+    else:
+        return render_template('sign_up.html')
+
+
+@app.route('/sign_out', methods=['POST'])
+def sign_out():
+    if 'login' not in session:
+        return redirect(url_for('sign_in'))
+
+    session.pop('login', None)
+    return redirect('/')
+
 
 if __name__ == '__main__':
     sent_link = None

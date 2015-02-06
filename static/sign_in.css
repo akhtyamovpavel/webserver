@@ -1,0 +1,18 @@
+ul.info {
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: deepskyblue;
+}
+
+ul.info li {
+    list-style-type: none;
+}
+
+ul.error {
+    font-weight: bold;
+    color: red;
+}
+
+ul.error li {
+    list-style-type: none;
+}

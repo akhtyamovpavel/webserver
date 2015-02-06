@@ -34,11 +34,14 @@ def add_url(url, link=None, login=None):
                 shortened_link = gen_string
                 break
     else:
-        if __urls__.get(link) is None:
-            shortened_link = link
+        for url_address in __urls__:
+            if url_address.get('link') == link:
+                gen_string = generator()
+                shortened_link = gen_string
+                break
         else:
-            gen_string = generator()
-            shortened_link = gen_string
+            shortened_link = link
+
     new_url = get_link(url, shortened_link, login)
     __urls__.append(new_url)
     save_urls()
