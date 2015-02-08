@@ -1,3 +1,4 @@
+import datetime
 from flask import Flask, render_template, redirect, request, flash, get_flashed_messages, session, url_for
 from data import add_url, get_url, get_list_links
 import os
@@ -22,19 +23,52 @@ def run_short_sites():
     if messages:
         for message in messages:
             current_link = message
-    return render_template('shortener/shortener.html', link=current_link)
+    shown_links = type(list()) == type(session.get('shortener_user_urls'))
+    list_urls_by_login = None
+    counter = 0
+    if session.get('shortener_user_urls'):
+        list_urls_by_login = []
+        for current_url in session.get('shortener_user_urls'):
+            counter += 1
+            current_data = dict()
+            current_data['url'] = current_url.get('url')
+            current_data['link'] = current_url.get('link')
+            current_data['number'] = counter
+            list_urls_by_login.append(current_data)
+    return render_template('shortener/shortener.html', link=current_link,
+                           shown_links=shown_links, list_urls=list_urls_by_login)
+
 
 @app.route('/shortener/new_url', methods=['POST'])
 def new_url():
     url = request.form['url']
     current_link = request.form['link']
+    login = session.get('login')
     if current_link == "":
-        link = add_url(url)
+        link = add_url(url, None, login)
     else:
-        link = add_url(url, current_link)
+        link = add_url(url, current_link, login)
 
     flash(link)
+    if session.get('login'):
+        session['shortener_user_urls'].append({'url': url, 'link': link, 'login': login})
+    return redirect('/shortener', code=302)
 
+
+@app.route('/shortener/show_urls_by_login')
+def show_urls_by_login():
+    if session.get('login') is None:
+        return '403'
+    urls = get_list_links(session.get('login'))
+    session['shortener_user_urls'] = urls
+    return redirect('/shortener', code=302)
+
+
+@app.route('/shortener/hide_urls_by_login')
+def hide_urls_by_login():
+    if session.get('login') is None:
+        return '403'
+    session.pop('shortener_user_urls', None)
     return redirect('/shortener', code=302)
 
 @app.route('/shortener/redirect', methods=['POST'])
@@ -61,6 +95,7 @@ def sign_in():
         password = request.form['password']
         if validate_user(login, password):
             session['login'] = request.form['login']
+            session.permanent_session_lifetime = datetime.timedelta(minutes=15)
             return redirect('/', code=302)
         else:
             flash("Wrong login or password", 'error')
@@ -100,12 +135,13 @@ def sign_out():
         return redirect(url_for('sign_in'))
 
     session.pop('login', None)
+    session.pop('shortener_user_urls', None)
     return redirect('/')
 
 
 if __name__ == '__main__':
     sent_link = None
     app.debug = True
-    app.secret_key = 'DSJIOPJ OIROJRO  O* UH#u8ch'
+    app.secret_key = os.urandom(24)
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)

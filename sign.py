@@ -25,7 +25,6 @@ def validate_user(user_in, password):
             salt_pass = SALT1 + password + SALT2
             hash_id = hashlib.md5()
             hash_id.update(bytes(salt_pass, encoding='utf-8'))
-            print(hash_id.hexdigest())
             if hash_id.hexdigest() == user.get('password'):
                 return True
             else:

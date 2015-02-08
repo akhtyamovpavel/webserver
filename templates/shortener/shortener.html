@@ -12,7 +12,7 @@
 {% endblock %}
 
 
-{
+
 {% block content %}
     <div id="main-section">
 
@@ -22,10 +22,54 @@
             <input class="pure-input-1-4" type="text" name="link" placeholder="Your link(if you want)">
             <button type="submit" class="pure-button pure-button-primary get-url-button">Shortener!</button>
         </form>
+        {% if session.get('login') %}
+            {% if shown_links %}
+                <table class="pure-table">
+                    <thead class="table-head">
+                        <tr>
+                            <td class="url-column">
+                                <b>Site</b>
+                            </td>
+                            <td class="link-column">
+                                <b>URL to</b>
+                            </td>
+                        </tr>
+                    </thead>
+                    {% if list_urls %}
+                        {% for url in list_urls %}
+                            {% if url.get('number') % 2 == 1 %}
+                                <tr class="odd-column">
+                            {% else %}
+                                <tr class="even-column">
+                            {% endif %}
+                            <td class="url-column">
+                                {{ url.get('url') }}
+                            </td>
+                            <td class="link-column">
+                                <a href="/send/{{ url.get('link') }}"> {{ url.get('link') }}</a>
+                            </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </table>
+                <form id="hide_urls_form" action="{{ url_for('hide_urls_by_login') }}">
+                    <button type="submit" id="hide_urls_by_login" class="pure-button pure-button-primary">Hide links</button>
+                </form>
+            {% else %}
+                <form id="show_urls_form" action="{{ url_for('show_urls_by_login') }}">
+                    <button type="submit" id="show_urls_by_login" class="pure-button pure-button-primary">Previous links</button>
+                </form>
+            {% endif %}
+        {% endif %}
+
+
+
         {% if link %}
-            Your link to URL: <b><a href="https://akhtyamovpavel.herokuapp.com/send/{{ link }}">
+            Your link to URL: <b><a href="/send/{{ link }}">
             https://akhtyamovpavel.herokuapp.com/send/{{ link }}</a></b>
         {% endif %}
+
+
     </div>
 
 {% endblock %}

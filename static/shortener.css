@@ -5,3 +5,37 @@
 .get-url-button {
     margin-top: 20px;
 }
+
+table {
+    margin-left: 60px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+thead.table-head {
+    background-color: lightcyan;
+}
+
+.url-column {
+    width: 60em;
+}
+
+.link-column {
+    width: 50px
+}
+
+.odd-column {
+    background-color: aqua;
+}
+
+.even-column {
+    background-color: khaki;
+}
+
+#hide_urls_form {
+    margin-left: 60px;
+}
+
+#show_urls_form {
+    margin-left: 60px;
+}
