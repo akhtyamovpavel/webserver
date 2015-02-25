@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Internet Shop
+{% endblock %}
+
+{% block main %}
+    <b> List of Products</b>
+    <br/>
+    {% for item in goods %}
+        <a href="/products/{{ item.id }}">{{ item.name }}</a>
+
+        {{ item.price }}
+
+    {% endfor %}
+{% endblock %}
