@@ -1,1 +1,1 @@
-web: python flask-src/webserver.py --log-file=-
+web: python3 flask-src/webserver.py --log-file=-
