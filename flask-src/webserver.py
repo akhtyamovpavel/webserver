@@ -82,7 +82,10 @@ def redirect_url(link):
         return '404'
     else:
         url = get_url(link)
-        if link.find('http://') != -1:
+        print(link)
+        if url.find('http://') != -1:
+            return redirect(get_url(link), code=302)
+        elif url.find('https://') != -1:
             return redirect(get_url(link), code=302)
         else:
             return redirect('http://' + url, code=302)
